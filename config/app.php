@@ -10,8 +10,7 @@ return [
     | This value is set when creating a Pterodactyl release. You should not
     | change this value if you are not maintaining your own internal versions.
     */
-
-    'version' => '1.11.8',
+    'version' => '1.11.9',
 
     /*
     |--------------------------------------------------------------------------
@@ -21,7 +20,7 @@ return [
     | change this value if you are not maintaining your own internal versions.
     */
 
-    'fork-version' => '1.3.2',
+    'fork-version' => '1.3.1'
 
     /*
     |--------------------------------------------------------------------------
