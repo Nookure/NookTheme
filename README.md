@@ -1,33 +1,24 @@
-# Nook Theme
-NookTheme is a free and open source [Pterodactyl theme](https://pterodactyl.io) designed to be simple, clean, and modern.
 
-![Image](https://i.imgur.com/AFjHGBr.png)
+# EspressoTheme
 
-<details>
-<summary>View Screenshots</summary>
+NookTheme is a free and open-source [Pterodactyl theme](https://pterodactyl.io) designed to provide a clean, simple, and modern look for your panel. It is optimized for use with Espresso Host, offering a streamlined user interface and functionality.
 
-![Image](https://i.imgur.com/CNxF3iT.png)
-![Image](https://i.imgur.com/IflRtEX.png)
-![Image](https://i.imgur.com/vNLK5jP.png)
-![Image](https://i.imgur.com/dnxV2CS.png)
-</details>
 
 ## Installation
 
-This will update your panel to the latest version of NookTheme panel is based. <br>
-You can see the version in the current branch name.
+Ensure you are using the latest version of the NookTheme for Espresso Host. To verify the version, check the branch name.
 
 <details>
 <summary>Upgrade PHP</summary>
 
-Before proceeding with the installation steps, ensure that your PHP version is upgraded to 8.2 or newer. Follow the instructions below to upgrade PHP:
+Before proceeding with the installation steps, please ensure your PHP version is upgraded to 8.2 or newer. Follow these steps to upgrade PHP:
 
 1. Update your package list:
 ```bash
 sudo apt update
 ```
 
-2. Install the required dependencies:
+2. Install required dependencies:
 ```bash
 sudo apt install -y software-properties-common
 ```
@@ -56,28 +47,22 @@ php -v
 
 ### Enter Maintenance Mode
 
-Whenever you are performing an update you should be sure to place your Panel into maintenance mode. This will prevent
-users from encountering unexpected errors and ensure everything can be updated before users encounter
-potentially new features.
+To prevent users from encountering unexpected errors while updating, place your panel into maintenance mode:
 
 ```bash
 cd /var/www/pterodactyl
-
 php artisan down
 ```
 
-### Download the theme
+### Download the Theme
 
-The first step in the update process is to download the new panel files from GitHub. The command below will download
-the release archive for the most recent version of Pterodactyl, save it in the current directory and will automatically
-unpack the archive into your current folder.
+To update to the latest version of NookTheme, download the release archive from GitHub with the following command:
 
 ```bash
 curl -L https://github.com/Nookure/NookTheme/releases/latest/download/panel.tar.gz | tar -xzv
 ```
 
-Once all of the files are downloaded we need to set the correct permissions on the cache and storage directories to avoid
-any webserver related errors.
+Once the files are downloaded, set the correct permissions for the cache and storage directories to avoid web server-related errors:
 
 ```bash
 chmod -R 755 storage/* bootstrap/cache
@@ -85,8 +70,7 @@ chmod -R 755 storage/* bootstrap/cache
 
 ### Update Dependencies
 
-After you've downloaded all of the new files you will need to upgrade the core components of the panel. To do this,
-simply run the commands below and follow any prompts.
+To upgrade the core components of the panel, run the following command:
 
 ```bash
 composer install --no-dev --optimize-autoloader
@@ -94,8 +78,7 @@ composer install --no-dev --optimize-autoloader
 
 ### Clear Compiled Template Cache
 
-You'll also want to clear the compiled template cache to ensure that new and modified templates show up correctly for
-users.
+Clear the compiled template cache to ensure new and modified templates show up correctly for users:
 
 ```bash
 php artisan view:clear
@@ -104,9 +87,7 @@ php artisan config:clear
 
 ### Database Updates
 
-You'll also need to update your database schema for the newest version of Pterodactyl. Running the command below
-will update the schema and ensure the default eggs we ship are up to date (and add any new ones we might have). Just
-remember, _never edit core eggs we ship_! They will be overwritten by this update process.
+Run the following command to update your database schema for the latest version:
 
 ```bash
 php artisan migrate --seed --force
@@ -114,8 +95,7 @@ php artisan migrate --seed --force
 
 ### Set Permissions
 
-The last step is to set the proper owner of the files to be the user that runs your webserver. In most cases this
-is `www-data` but can vary from system to system &mdash; sometimes being `nginx`, `caddy`, `apache`, or even `nobody`.
+Set the appropriate owner for the files based on the user running your webserver. In most cases, it will be `www-data`, but it can vary depending on your server setup.
 
 ```bash
 # If using NGINX or Apache (not on CentOS):
@@ -124,13 +104,13 @@ chown -R www-data:www-data /var/www/pterodactyl/*
 # If using NGINX on CentOS:
 chown -R nginx:nginx /var/www/pterodactyl/*
 
-# If using Apache on CentOS
+# If using Apache on CentOS:
 chown -R apache:apache /var/www/pterodactyl/*
 ```
 
-### Restarting Queue Workers
+### Restart Queue Workers
 
-After _every_ update you should restart the queue worker to ensure that the new code is loaded in and used.
+After updating, restart the queue worker to load the new code:
 
 ```bash
 php artisan queue:restart
@@ -138,8 +118,7 @@ php artisan queue:restart
 
 ### Exit Maintenance Mode
 
-Now that everything has been updated you need to exit maintenance mode so that the Panel can resume accepting
-connections.
+Finally, exit maintenance mode so the panel can resume accepting connections:
 
 ```bash
 php artisan up
@@ -150,7 +129,7 @@ php artisan up
 * [Panel Documentation](https://pterodactyl.io/panel/1.0/getting_started.html)
 * [Wings Documentation](https://pterodactyl.io/wings/1.0/installing.html)
 * [Community Guides](https://pterodactyl.io/community/about.html)
-* Or, get additional help [via Discord](https://discord.nookure.com/)
+* For additional help, join us [via Discord](https://discord.nookure.com/)
 
 ## Star History
 
@@ -170,4 +149,9 @@ Pterodactyl® Copyright © 2015 - 2023 Dane Everitt and contributors.
 
 Pterodactyl code released under the [MIT License](./LICENSE.md).
 
-NookTheme code  edits released under the [GNU GPLv3 License](./NookLicense.md).
+NookTheme code edits released under the [GNU GPLv3 License](./NookLicense.md).
+
+---
+
+*Modified by DevMatei for Espresso Host integration.*
+
