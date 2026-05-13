@@ -23,14 +23,39 @@ module.exports = {
                 header: ['"IBM Plex Sans"', '"Roboto"', 'system-ui', 'sans-serif'],
             },
             colors: {
-                black: '#131a20',
-                // "primary" and "neutral" are deprecated, prefer the use of "blue" and "gray"
-                // in new code.
-                primary: colors.blue,
+                black: '#0a0e14',
+                // Modern 3D gradient palette with vibrant accents
+                primary: {
+                    50: '#f0f4ff',
+                    100: '#e0e9ff',
+                    200: '#c7d9ff',
+                    300: '#a4befd',
+                    400: '#7c9ef9',
+                    500: '#5b7cf6',
+                    600: '#4856ed',
+                    700: '#3940d4',
+                    800: '#2f36ad',
+                    900: '#272f8a',
+                },
+                accent: {
+                    50: '#f5f8ff',
+                    100: '#e8f1ff',
+                    200: '#d4e5ff',
+                    300: '#b8d1ff',
+                    400: '#92b5ff',
+                    500: '#6b93ff',
+                    600: '#4d6bff',
+                    700: '#3d52e8',
+                    800: '#3140c4',
+                    900: '#2a36a0',
+                },
+                gradient: {
+                    start: '#6b93ff',
+                    middle: '#4d6bff',
+                    end: '#3140c4',
+                },
                 orange: colors.orange,
                 gray: gray,
-                neutral: gray,
-                cyan: colors.cyan,
                 neutral: {
                     50: colors.neutral[50],
                     100: colors.neutral[100],
@@ -39,9 +64,9 @@ module.exports = {
                     400: colors.neutral[400],
                     500: colors.neutral[500],
                     600: colors.neutral[600],
-                    700: '#17171B',
-                    800: '#212121',
-                    900: '#121212',
+                    700: '#1a1f28',
+                    800: '#131820',
+                    900: '#0a0e14',
                 }
             },
             fontSize: {
@@ -53,6 +78,9 @@ module.exports = {
             borderColor: theme => ({
                 default: theme('colors.neutral.400', 'currentColor'),
             }),
+            backgroundImage: {
+                'gradient-3d': 'linear-gradient(135deg, #6b93ff 0%, #4d6bff 50%, #3140c4 100%)',
+            },
         },
     },
     plugins: [
